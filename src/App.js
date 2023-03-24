@@ -1,28 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import { useEffect, useState } from 'react';
+import Banner from './componentes/Banner';
+import Formulario from './componentes/Formulario';
 
 function App() {
-  const [counter, setCounter] = useState(0);
-
-  function somaContador() {
-    setCounter(counter + 1);
-  }
-
-  useEffect(() => {
-    console.error(counter);
-  }, [counter]);
-
+  const teste = 1;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={somaContador}>Aumentar contador</button>
-        <p>
-          {counter}
-        </p>
-
-      </header>
+      <Banner />
+      <Formulario formsClass="app" />
     </div>
   );
 }
