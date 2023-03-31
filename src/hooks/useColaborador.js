@@ -1,27 +1,30 @@
 function useColaborador() {
-    const buscaColaborador = () => {
-        fetch('http://localhost:3333/colaborador')
+    const buscaColaborador = async () => {
+        const data = await fetch('http://localhost:3333/colaborador')
             .then(async (response) => {
                 const data = await response.json();
-                console.log(data);
+                return data;
             })
-            .catch((err) => console.error(err))
+            .catch((err) => console.error(err));
+
+        return data;
     }
 
-    const adicionaColaborador = (dadosColaborador) => {
-        fetch('http://localhost:3333/colaborador', {
+    const adicionaColaborador = async (dadosColaborador) => {
+        const criado = await fetch('http://localhost:3333/colaborador', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "colab_nome": "Igor",
-                "colab_cargo": "Frontend",
-                "colab_imagem": "https://github.com/MacMoraes.png",
-                "colab_time": "frontend"
+                "colab_nome": dadosColaborador.nome,
+                "colab_cargo": dadosColaborador.cargo,
+                "colab_imagem": dadosColaborador.imagem,
+                "colab_time": dadosColaborador.time
             })
-        })
+        });
+        return criado;
     }
 
 

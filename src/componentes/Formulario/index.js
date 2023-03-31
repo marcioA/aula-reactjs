@@ -15,16 +15,10 @@ const Formulario = (props) => {
 
     const colab = useColaborador();
 
-    // colab.evento.buscaColaborador();
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
-        // props.aoColaboradorCadastrado({
-        //     nome,
-        //     cargo,
-        //     imagem,
-        //     time
-        // })
+        colab.evento.adicionaColaborador({ nome, cargo, imagem, time });
         setColaboradores([...colaboradores, { nome, cargo, imagem, time }])
         setNome('')
         setCargo('')
@@ -67,7 +61,7 @@ const Formulario = (props) => {
                     Criar Card
                 </Botao>
             </form>
-            <div>
+            {/* <div>
                 <button onClick={colab.evento.adicionaColaborador}>Adicionar Colaborador Fixo</button>
                 {colaboradores.map(colaborador => (
 
@@ -79,7 +73,7 @@ const Formulario = (props) => {
                     </div>
 
                 ))}
-            </div>
+            </div> */}
         </section>
     )
 }
